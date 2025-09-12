@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 
 import { scheduleNew } from "../../services/schedule-new";
 
-import {scheduleDay} from "../schedules/load.js"
+import {schedulesDay} from "../schedules/load.js"
 
 const form = document.querySelector("form")
 const clientName = document.getElementById("client")
@@ -35,12 +35,12 @@ form.onsubmit = async (event) => {
     const id = new Date().getTime()
 
     await scheduleNew({
-      id, 
+      id:String(id), 
       name,
       when
     })
 
-    await scheduleDay()
+    await schedulesDay()
 
     clientName.value = ""
 
